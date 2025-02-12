@@ -12,11 +12,16 @@ public class Car {
 	    this.engine = engine;
 	  }
 	
-	public Car (Car other, Boolean copy) {
-		this.model = other.model;
-		this.driver = other.model;
-		this.engine = other.engine;
-		
+	public Car (Car other, Boolean deepCopy) {
+		this.model = other.model; 
+
+	    if (deepCopy) {
+	        this.driver = new Driver(other.driver);  
+	        this.engine = new Engine(other.engine);  
+	    } else {
+	        this.driver = other.driver; 
+	        this.engine = other.engine;
+	    }
 	}
 	
 	public String getModel() {
